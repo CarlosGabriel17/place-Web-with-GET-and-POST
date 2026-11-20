@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Alumnos | GET y POST</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Gestión de Alumnos (SSR con GET y POST)</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    {% if msg %}<div class="alerta ok">{{ msg }}</div>{% endif %}
+    {% if error %}<div class="alerta err">{{ error }}</div>{% endif %}
+
+    <div class="grid">
+      <section class="card">
+        <h2>Alta de alumno (POST)</h2>
+        <form action="/alumnos/alta" method="post" class="formulario">
+          <label for="no_control">No. de Control</label>
+          <input type="text" id="no_control" name="no_control" required />
+
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required />
+
+          <label for="carrera">Carrera</label>
+          <input type="text" id="carrera" name="carrera" required />
+
+          <button type="submit" class="btn-primario">Registrar</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Consultas (GET) y Bajas (POST)</h2>
+        <form action="/" method="get" class="buscador">
+          <input type="text" name="q" value="{{ q }}" placeholder="Buscar..." />
+          <button type="submit" class="btn-sec">Buscar</button>
+          {% if q %}<a href="/" class="btn-limpiar">Limpiar</a>{% endif %}
+        </form>
+
+        <table>
+          <thead>
+            <tr><th>No. Control</th><th>Nombre</th><th>Carrera</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            {% for a in alumnos %}
+              <tr>
+                <td><strong>{{ a.no_control }}</strong></td>
+                <td>{{ a.nombre }}</td>
+                <td>{{ a.carrera }}</td>
+                <td>
+                  <form action="/alumnos/baja" method="post">
+                    <input type="hidden" name="no_control" value="{{ a.no_control }}" />
+                    <button type="submit" class="btn-baja">Baja</button>
+                  </form>
+                </td>
+              </tr>
+            {% else %}
+              <tr><td colspan="4">Sin resultados.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

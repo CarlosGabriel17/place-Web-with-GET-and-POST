@@ -1,0 +1,22 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Segoe UI", sans-serif; background: #f3f6f9; color: #243240; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.header { background: #12314d; color: #fff; padding: 20px 0; border-bottom: 4px solid #007e85; margin-bottom: 22px; }
+.grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
+.card { background: #fff; border: 1px solid #d8e1e8; border-radius: 10px; padding: 20px; }
+.card h2 { color: #12314d; font-size: 1.05rem; margin-bottom: 14px; }
+.formulario { display: flex; flex-direction: column; gap: 9px; }
+input { padding: 8px 10px; border: 1px solid #cbd6e2; border-radius: 6px; }
+button, .btn-limpiar { padding: 8px 13px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; }
+.btn-primario { background: #007e85; color: #fff; margin-top: 6px; }
+.btn-sec { background: #12314d; color: #fff; }
+.btn-limpiar { background: #e8eef3; color: #12314d; }
+.btn-baja { background: #c0392b; color: #fff; padding: 5px 10px; }
+.buscador { display: flex; gap: 8px; margin-bottom: 12px; }
+.buscador input { flex: 1; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 9px 6px; border-bottom: 1px solid #edf2f6; }
+.alerta { padding: 11px 14px; border-radius: 8px; margin-bottom: 16px; font-weight: 600; }
+.ok { background: #e3f5ec; color: #1d6f42; }
+.err { background: #fdecec; color: #9e2a2b; }
+@media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
